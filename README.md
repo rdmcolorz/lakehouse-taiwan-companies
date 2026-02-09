@@ -1,6 +1,8 @@
 # Open Lakehouse Lab
 
 A local data lakehouse stack using **Apache Iceberg**, **Nessie** (catalog), **MinIO** (S3-compatible storage), and **Dremio** for querying.
+*This is a project mainly for learning purposes, but I'm also interested in Taiwan's startup landscape and what companies are being created in recent years.
+This data has potential to guide entrepreneurs make better decisions based on public data.
 
 ## Prerequisites
 
@@ -29,11 +31,14 @@ A local data lakehouse stack using **Apache Iceberg**, **Nessie** (catalog), **M
 
 | Path | Description |
 |------|-------------|
-| `docker-compose.yml` | MinIO, Nessie, Dremio on network `iceberg_env` |
+| `docker-compose.yml` | MinIO, Nessie, Dremio on network `iceberg_env` |eval "$(ssh-agent -s)"
 | `notebooks/` | PySpark + Iceberg + Nessie examples |
 | `data_extraction/` | Scripts to pull data (e.g. from URLs in CSV) into MinIO |
 
 ## Data Extraction
+
+The csv containing links to comapny registry data comes from: [data.gov.tw](https://data.gov.tw/datasets/search?p=1&size=10&s=_score_desc&rft=%E5%85%AC%E5%8F%B8%E7%99%BB%E8%A8%98%E8%B3%87%E6%96%99).
+Download the csv and include it in `data_extraction/` to pull all associated csvs into object storage.
 
 From `data_extraction/` you can run `pull_data.py` (with a Python env that has `minio`, `requests`) to ingest files listed in `data_links.csv` into the MinIO `datalake` bucket.
 
