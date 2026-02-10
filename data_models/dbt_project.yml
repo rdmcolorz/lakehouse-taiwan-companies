@@ -1,0 +1,19 @@
+name: open_lakehouse_lab
+version: 1.0.0
+config-version: 2
+
+profile: lakehouse_lab
+
+model-paths:
+  - raw
+
+macro-paths: []
+test-paths: []
+seed-paths: []
+snapshot-paths: []
+analysis-paths: []
+
+models:
+  open_lakehouse_lab:
+    raw:
+      +schema: raw

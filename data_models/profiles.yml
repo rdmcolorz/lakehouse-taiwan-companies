@@ -1,0 +1,30 @@
+lakehouse_lab:
+  target: dev
+  outputs:
+    dev:
+      type: dremio
+      # IP or hostname of your coordinator node
+      software_host: "{{ env_var('DREMIO_HOST') }}"
+      # Flight port (default is 32010), NOT the UI port (9047)
+      port: 9047
+      
+      user: "{{ env_var('DREMIO_USER') }}"
+      password: "{{ env_var('DREMIO_PASSWORD') }}"
+      
+      # Where dbt will write PHYSICAL tables
+      object_storage_source: "datalake"
+      # Path *within* the object storage source where dbt creates tables.
+      # Your data lives at datalake.datalake.* (source=bucket= "datalake"),
+      # so we must set this to the bucket name to avoid errors like:
+      #   "Error while trying to find bucket: raw_company__dbt_tmp"
+      object_storage_path: "datalake"
+      
+      # Where dbt will write VIRTUAL views
+      dremio_space: "dbt_dev_space"
+      
+      # Optional: default schema
+      schema: "raw"
+      
+      # Enable SSL if your flight endpoint is secure
+      use_ssl: false 
+      threads: 4

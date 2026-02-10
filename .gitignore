@@ -1,2 +1,16 @@
 .env
+.user.yml
 startup_venv/
+dbt_env/
+logs/
+
+
+.DS_Store
+
+notebooks/
+
+# ai
+CLAUDE.md
+
+#dbt
+target/

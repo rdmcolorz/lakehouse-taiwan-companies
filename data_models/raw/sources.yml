@@ -1,0 +1,20 @@
+# Source: company CSV data in MinIO, updated periodically by pull_data.py.
+# VDS in Dremio: datalake.datalake.company_data
+# Columns (from 主要欄位說明): 統一編號, 公司名稱, 公司地址, 資本總額, 實收資本額, ...
+version: 2
+
+sources:
+  - name: lakehouse
+    description: Raw data in the lakehouse (MinIO/S3 via Dremio)
+    database: "datalake"
+    schema: "datalake"
+    tables:
+      - name: company_data_landing
+        description: VDS at datalake.datalake.company_data (all company registry CSVs)
+        identifier: company_data
+        columns:
+          - name: "統一編號"
+            description: Unified Business Number (unique company ID in Taiwan)
+            test:
+              unique: false  # unique per source dataset; we dedupe in raw_company
+              not_null: true
