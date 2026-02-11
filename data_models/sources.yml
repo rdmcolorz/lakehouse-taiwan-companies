@@ -18,3 +18,9 @@ sources:
             test:
               unique: false  # unique per source dataset; we dedupe in raw_company
               not_null: true
+  - name: reference
+    description: Reference / mapping data
+    database: "datalake"
+    schema: "reference"
+    tables:
+      - name: ref_industry_code_mapping

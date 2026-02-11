@@ -6,10 +6,12 @@ profile: lakehouse_lab
 
 model-paths:
   - raw
+  - intermediate
 
 macro-paths: []
 test-paths: []
-seed-paths: []
+seed-paths:
+  - seeds
 snapshot-paths: []
 analysis-paths: []
 
@@ -17,3 +19,5 @@ models:
   open_lakehouse_lab:
     raw:
       +schema: raw
+    intermediate:
+      +schema: intermediate
